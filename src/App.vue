@@ -30,11 +30,9 @@ export default {
   },
   created() {
     this.$http.get('/api/seller').then((response) => {
-      response = response.body
-      // console.log(response)
+      response = response.data
       if (response.errno === ERR_OK) {
         this.seller = response.data
-        // console.log(this.seller)
       }
     })
   },

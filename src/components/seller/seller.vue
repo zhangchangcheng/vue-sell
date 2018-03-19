@@ -11,7 +11,7 @@
         <span class="name">{{ seller.name }}</span>
       </div>
       <div class="descirption">
-        {{ seller.descirption}}/{{selelr.deliveryTime}}
+        {{ seller.descirption}}/{{seller.deliveryTime}}
       </div>
     </div>
     <div class="bulletin-warpper">

@@ -70,7 +70,7 @@ export default {
   created () {
     this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee']
     this.$http.get('/api/goods').then((response) => {
-      response = response.body
+      response = response.data
       if (response.errno === ERR_OK) {
         this.goods = response.data
         this.$nextTick(() => {

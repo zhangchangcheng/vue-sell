@@ -29,7 +29,7 @@
     <div class="background">
       <img :src="seller.avatar" alt="">
     </div>
-    <transition name="fade">
+    <transition name="slide-fade">
       <div v-show="detailShow" class="detail">
       <div class="detail-wrapper clearfix">
         <div class="detail-main">
@@ -43,7 +43,7 @@
             <div class="line"></div>
           </div>
           <ul v-if="seller.supports" class="supports">
-            <li class="support-item" v-for="(item, index) in seller.supports">
+            <li class="support-item" v-for="(item, index) in seller.supports" :key="index">
               <span class="icon" :class="classMap[seller.supports[index].type]"></span>
               <span class="text">{{ seller.supports[index].description }}</span>
             </li>
@@ -248,11 +248,11 @@ export default {
       height: 100%;
       overflow: auto;
       background: rgba(7, 17, 27, 0.8);
-      // backdrop-filter: blur(2px);
-      &.fade-enter-active, &.fade-leave-active {
-        transition: opacity .5s
+      &.slide-fade-enter-active, &.slide-fade-leave-active {
+        transition: all .3s ease;
       }
-      &.fade-enter, &.fade-leave-to {
+      &.slide-fade-enter, &.slide-fade-leave-to {
+        transform: translateX(100%);
         opacity: 0;
       }
       .detail-wrapper {
