@@ -28,6 +28,9 @@
                 <div class="price">
                   <span class="now">￥{{food.price}}</span><span class="old" v-show="food.oldPrice">￥{{food.oldPrice}}</span>
                 </div>
+                <div class="cartcontrol-wrapper">
+                  <cartcontrol :food="food"></cartcontrol>
+                </div>
               </div>
             </li>
           </ul>
@@ -41,6 +44,8 @@
 <script>
 import BScroll from 'better-scroll'
 import shopcart from '@/components/shopcart/shopcart'
+import cartcontrol from '@/components/cartControl/cartcontrol'
+
 const ERR_OK = 0
 export default {
   props: {
@@ -82,6 +87,7 @@ export default {
   },
   methods: {
     selectMenu(index, event) {
+      // PC页面不会屏蔽点击
       if (!event._constructed) {
         return
       }
@@ -90,8 +96,13 @@ export default {
       this.foodsScroll.scrollToElement(el, 300)
     },
     _initScroll() {
-      this.menuScroll = new BScroll(this.$refs.menuWrapper, {click: true})
-      this.foodsScroll = new BScroll(this.$refs.foodsWrapper, {probeType: 3})
+      this.menuScroll = new BScroll(this.$refs.menuWrapper, {
+        click: true
+      })
+      this.foodsScroll = new BScroll(this.$refs.foodsWrapper, {
+        click: true,
+        probeType: 3
+      })
 
       this.foodsScroll.on('scroll', (pos) => {
         this.scrollY = Math.abs(Math.round(pos.y))
@@ -109,7 +120,8 @@ export default {
     }
   },
   components: {
-    shopcart
+    shopcart,
+    cartcontrol
   }
 }
 </script>
@@ -235,6 +247,11 @@ export default {
               font-size: 10px;
               color: rgb(147, 153, 159);
             }
+          }
+          .cartcontrol-wrapper {
+            position: absolute;
+            right: 0;
+            bottom: 12px;
           }
         }
       }
