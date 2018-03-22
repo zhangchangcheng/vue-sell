@@ -29,7 +29,7 @@
                   <span class="now">￥{{food.price}}</span><span class="old" v-show="food.oldPrice">￥{{food.oldPrice}}</span>
                 </div>
                 <div class="cartcontrol-wrapper">
-                  <cartcontrol :food="food"></cartcontrol>
+                  <cart-control :food="food"></cart-control>
                 </div>
               </div>
             </li>
@@ -37,16 +37,16 @@
         </li>
       </ul>
     </div>
-    <shopcart :select-foods="selectFoods" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
+    <shop-cart :select-foods="selectFoods" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shop-cart>
     <food :food="selectedFood" ref="food"></food>
   </div>
 </template>
 
 <script>
 import BScroll from 'better-scroll'
-import shopcart from '@/components/shopcart/shopcart'
-import cartcontrol from '@/components/cartControl/cartcontrol'
-import food from '@/components/food/food'
+import ShopCart from '@/components/shopcart/ShopCart'
+import CartControl from '@/components/cartControl/CartControl'
+import Food from '@/components/food/Food'
 
 const ERR_OK = 0
 export default {
@@ -141,9 +141,9 @@ export default {
     }
   },
   components: {
-    shopcart,
-    cartcontrol,
-    food
+    ShopCart,
+    CartControl,
+    Food
   }
 }
 </script>

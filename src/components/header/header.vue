@@ -68,7 +68,7 @@
 </template>
 
 <script>
-import star from '../star/star'
+import Star from '../star/Star'
 
 export default {
   props: {
@@ -93,7 +93,7 @@ export default {
     }
   },
   components: {
-    star
+    Star
   }
 }
 </script>
