@@ -32,6 +32,7 @@ import Vue from 'vue'
 import BScroll from 'better-scroll'
 import cartcontrol from '@/components/cartControl/cartcontrol'
 
+
 export default {
   props: {
     food: {
