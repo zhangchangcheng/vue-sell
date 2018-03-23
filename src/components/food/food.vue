@@ -32,8 +32,8 @@
         <split></split>
         <div class="rating">
           <h1 class="title">商品评价</h1>
-          <rating-select :select-type="selectType" :only-content="onlyContentp" :desc="desc"
-            :rating="food.ratings"
+          <rating-select :select-type="selectType" :only-content="onlyContent" :desc="desc"
+            :ratings="food.ratings"
             @toggleContent="toggleContentParent" @selectType="selectTypeParent"
           ></rating-select>
           <div class="rating-wrapper">
@@ -79,7 +79,7 @@ export default {
     return {
       showFlag: false,
       selectType: ALL,
-      onlyContent: false,
+      onlyContent: true,
       desc: {
         all: '满意',
         positive: '推荐',
@@ -89,7 +89,6 @@ export default {
   },
   methods: {
     show() {
-      console.log(this.food)
       this.showFlag = true
       this.$nextTick(() => {
         if (!this.scroll) {
@@ -127,7 +126,6 @@ export default {
       })
     },
     toggleContentParent(onlyContent) {
-      console.log('toggleContentP')
       this.onlyContent = onlyContent
       this.$nextTick(() => {
         this.scroll.refresh()
